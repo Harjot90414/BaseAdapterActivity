@@ -16,15 +16,12 @@ class MainActivity : AppCompatActivity(),ClickInterface {
 
 lateinit var binding: ActivityMainBinding
     lateinit var listAdapter: ListAdapter
-    lateinit var arrayAdapter : ArrayAdapter<String>
     var userArray = ArrayList<UserModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        arrayAdapter = ArrayAdapter(this,android.R.layout.activity_list_item)
-        binding.lvListView.adapter = arrayAdapter
 
         listAdapter = ListAdapter(userArray,this)
         binding.lvListView.adapter = listAdapter
@@ -102,9 +99,9 @@ lateinit var binding: ActivityMainBinding
             alertDialog.setCancelable(true)
         }
         alertDialog.setPositiveButton("Yes"){_,_->
-            Toast.makeText(this, "The item is deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "The item is  $position", Toast.LENGTH_SHORT).show()
             userArray.removeAt(position)
-            arrayAdapter.notifyDataSetChanged()
+            listAdapter.notifyDataSetChanged()
         }
         alertDialog.show()
     }
