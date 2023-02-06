@@ -99,7 +99,7 @@ lateinit var binding: ActivityMainBinding
             alertDialog.setCancelable(true)
         }
         alertDialog.setPositiveButton("Yes"){_,_->
-            Toast.makeText(this, "The item is  $position", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "The item is  deleted", Toast.LENGTH_SHORT).show()
             userArray.removeAt(position)
             listAdapter.notifyDataSetChanged()
         }
